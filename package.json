@@ -1,0 +1,22 @@
+{
+  "name": "orders",
+  "version": "1.0.0",
+  "description": "Rest api orders module using express framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Suprabuddha/orders.git"
+  },
+  "author": "Suprabuddha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Suprabuddha/orders/issues"
+  },
+  "homepage": "https://github.com/Suprabuddha/orders#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
