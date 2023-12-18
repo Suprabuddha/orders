@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Suprabuddha/orders#readme",
   "dependencies": {
+    "aws-xray-sdk": "^3.5.3",
     "express": "^4.18.2"
   }
 }
