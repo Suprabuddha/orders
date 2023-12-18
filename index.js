@@ -10,6 +10,7 @@ const { port } = require("./config");
 const PORT = process.env.PORT || port;
 
 awsxray.captureHTTPsGlobal(require('http'), true);
+awsxray.config([awsxray.plugins.ECSPlugin]);
 
 app.use(awsxray.express.openSegment('MyApp'));
 
