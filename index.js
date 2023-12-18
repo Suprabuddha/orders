@@ -9,6 +9,9 @@ app.use(express.json());
 const { port } = require("./config");
 const PORT = process.env.PORT || port;
 
+awssdk.config.update({region: 'REGION'});
+const dynamoDB = new awssdk.DynamoDB({apiVersion: '2012-08-10'});
+
 awsxray.captureHTTPsGlobal(require('http'), true);
 awsxray.config([awsxray.plugins.ECSPlugin]);
 
@@ -17,6 +20,29 @@ app.use(awsxray.express.openSegment('MyApp'));
 app.get('/status', (request, response) => {
    const status = {
       'Status': 'Running new'
+   };
+   response.status(200);
+   response.send(status);
+});
+
+app.post('/create', (request, response) => {
+   const params = {
+     TableName: 'orderdtl',
+     Key: {
+       'orderId': {N: request.body.orderno},
+     }
+   };
+   
+   dynamoDB.putItem(params, function(err, data) {
+     if (err) {
+       console.error("Error", err);
+     } else {
+       console.log("Success", data);
+     }
+   });
+   
+   const status = {
+      'Status': 'New item is added'
    };
    response.status(200);
    response.send(status);
