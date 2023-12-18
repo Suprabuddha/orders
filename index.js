@@ -16,7 +16,7 @@ app.use(awsxray.express.openSegment('MyApp'));
 
 app.get('/status', (request, response) => {
    const status = {
-      'Status': 'Running'
+      'Status': 'Running new'
    };
    response.status(200);
    response.send(status);
