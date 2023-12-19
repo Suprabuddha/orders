@@ -9,7 +9,7 @@ app.use(express.json());
 const { port } = require("./config");
 const PORT = process.env.PORT || port;
 
-awssdk.config.update({region: 'REGION'});
+awssdk.config.update({region: 'ap-south-1'});
 const dynamoDB = new awssdk.DynamoDB({apiVersion: '2012-08-10'});
 
 awsxray.captureHTTPsGlobal(require('http'), true);
