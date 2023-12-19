@@ -1,15 +1,15 @@
 const express = require("express");
 const awsxray = require("aws-xray-sdk");
 const aws = require("aws-sdk");
+aws.config.update({region: 'ap-south-1'});
 
 const awssdk = awsxray.captureAWS(aws);
-awsxray.captureHTTPsGlobal(require('http'), true);
+//awsxray.captureHTTPsGlobal(require('http'), true);
 const app = express();
 app.use(express.json());
 const { port } = require("./config");
 const PORT = process.env.PORT || port;
 
-awssdk.config.update({region: 'ap-south-1'});
 const dynamoDB = new awssdk.DynamoDB({apiVersion: '2012-08-10'});
 
 awsxray.captureHTTPsGlobal(require('http'), true);
@@ -28,7 +28,7 @@ app.get('/status', (request, response) => {
 app.post('/create', (request, response) => {
    const params = {
      TableName: 'orderdtl',
-     Key: {
+     Item: {
        'orderId': {N: request.body.orderno},
      }
    };
