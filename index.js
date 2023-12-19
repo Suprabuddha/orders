@@ -32,7 +32,7 @@ app.post('/create', (request, response) => {
        'orderId': {N: request.body.orderno},
      }
    };
-   var statusString = "Success"
+   var statusString = "Success"+request.body.orderno;
    dynamoDB.putItem(params, function(err, data) {
      if (err) {
        console.error("Error", err);
