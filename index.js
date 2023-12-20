@@ -17,7 +17,7 @@ const dynamoDB = new awssdk.DynamoDB({apiVersion: '2012-08-10'});
 awsxray.captureHTTPsGlobal(require('http'), true);
 awsxray.config([awsxray.plugins.ECSPlugin]);
 
-app.use(awsxray.express.openSegment('MyApp'));
+app.use(awsxray.express.openSegment(process.env.SEGNAME));
 
 app.get('/status', (request, response) => {
    const status = {
