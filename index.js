@@ -31,7 +31,8 @@ app.post('/create', (request, response) => {
    const params = {
      TableName: 'orderdtl',
      Item: {
-       'orderId': {N: request.body.orderno},
+       //'orderId': {N: request.body.orderno},
+       'orderId': request.body.orderno,
      }
    };
    var statusString = "Success"+request.body.orderno;
