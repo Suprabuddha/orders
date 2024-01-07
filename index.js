@@ -29,11 +29,11 @@ app.get('/status', (request, response) => {
 
 app.post('/create', (request, response) => {
    var orderno = request.body.orderno;
-   var orderno_str = orderno.toString();
+   //var orderno_str = orderno.toString();
    const params = {
      TableName: 'orderdtl',
      Item: {
-       'orderId': {N: orderno_str},
+       'orderId': {N: orderno},
        //'orderId': orderno_str,
      }
    };
