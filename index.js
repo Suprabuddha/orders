@@ -31,16 +31,16 @@ app.post('/create', (request, response) => {
    var orderno = request.body.orderno;
    console.log("order no== "+orderno);
    console.log("type of order no" + typeof orderno);
-   //var orderno_str = orderno.toString();
+   var orderno_str = orderno.toString();
    const params = {
      TableName: 'orderdtl',
      Item: {
-       'orderId': {N: orderno},
+       'orderId': {N: orderno_str},
        //'orderId': orderno_str,
      }
    };
    
-   var statusString = "Success"+request.body.orderno;
+   var statusString = "Success"+orderno_str;
    dynamoDB.putItem(params, function(err, data) {
      if (err) {
        console.error("Error", err);
