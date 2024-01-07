@@ -29,6 +29,8 @@ app.get('/status', (request, response) => {
 
 app.post('/create', (request, response) => {
    var orderno = request.body.orderno;
+   console.log("order no== "+orderno);
+   console.log("type of order no" + typeof orderno);
    //var orderno_str = orderno.toString();
    const params = {
      TableName: 'orderdtl',
