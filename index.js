@@ -28,6 +28,7 @@ app.get('/status', (request, response) => {
 });
 
 app.post('/create', (request, response) => {
+   console.log("request**** ");        
    var orderno = request.body.orderno;
    console.log("order no== "+orderno);
    console.log("type of order no" + typeof orderno);
